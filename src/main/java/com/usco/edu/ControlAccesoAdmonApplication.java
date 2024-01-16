@@ -7,10 +7,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
 @SpringBootApplication
-public class PuestoVigilanciaAdministradorApplication {
+public class ControlAccesoAdmonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PuestoVigilanciaAdministradorApplication.class, args);
+		SpringApplication.run(ControlAccesoAdmonApplication.class, args);
 	}
 	
 

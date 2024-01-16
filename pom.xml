@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>usco.edu.co</groupId>
-	<artifactId>puesto-vigilancia-administrador</artifactId>
+	<artifactId>control-acceso-admon</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>puesto-vigilancia-administrador</name>
+	<name>control-acceso-admon</name>
 	<description>Sistema que comprende la configuracion de los puestos y asignacion de vigilantes</description>
 
 	<properties>
