@@ -15,12 +15,12 @@ public class FotoCarnetDaoImpl implements IFotoCarnetDao {
 	public JdbcTemplate jdbcTemplate;
 
 	@Override
-	public String obtenerTokenFoto(String atributos, String user) {
+	public String obtenerTokenFoto(String atributos) {
 		String sql = "SELECT dbo.getTokenDocumento(?)";
 		return jdbcTemplate.queryForObject(sql, new Object[] { atributos }, String.class);
 	}
 	@Override
-	public String obtenerTokenFotoVisualizar(String atributos, String user) {
+	public String obtenerTokenFotoVisualizar(String atributos) {
 		String sql = "SELECT dbo.getTokenDocumento(?) as token";
 		return jdbcTemplate.queryForObject(sql, new Object[] { atributos }, String.class);
 	}

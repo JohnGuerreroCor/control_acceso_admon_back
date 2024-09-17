@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
-
+	
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.usco.edu.dao.ILoginDao;
+import com.usco.edu.dao.IInicioSesionDao;
 import com.usco.edu.dao.IUsuarioDao;
 import com.usco.edu.entities.Role;
 import com.usco.edu.entities.Usuario;
@@ -41,7 +41,7 @@ public class UsuarioService implements UserDetailsService,IUsuarioService{
 	private IUsuarioDao usuariodao;
 	
 	@Autowired
-	private ILoginDao logindao;
+	private IInicioSesionDao inicioSesionDao;
 	
 	@Autowired
 	private SegundaClave segundaClaveComponent;
@@ -74,7 +74,7 @@ public class UsuarioService implements UserDetailsService,IUsuarioService{
 				.collect(Collectors.toList());
 				
 		//Segunda clave
-		String SegundaClaveReal = logindao.obtenerSegundaClaveReal(segundaClave);
+		String SegundaClaveReal = inicioSesionDao.obtenerSegundaClaveReal(segundaClave);
 
 		comprobarSegundaClave(usuario.getUserdb(),SegundaClaveReal);
 		segundaClaveComponent.setClave(username, SegundaClaveReal);

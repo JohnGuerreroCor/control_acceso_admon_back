@@ -19,7 +19,7 @@ public class UsuarioDaoImpl implements IUsuarioDao{
 
 	@Override
 	public Usuario findByUsername(String username) {
-		String sql = "select * from carnetizacion.usuario_carnetizacion_control_acceso_admon_login uca "
+		String sql = "select *, GETDATE() as horaInicioSesion from carnetizacion.usuario_carnetizacion_control_acceso_admon_login uca "
 				+ "inner join uaa u on u.uaa_codigo = uca.usg_uaa "
 				+ "inner join sede s on s.sed_codigo = u.sed_codigo "
 				+ "inner join persona p on p.per_codigo = uca.up "

@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.usco.edu.entities.Administrativo;
-import com.usco.edu.service.IAdministrativoCarnetService;
+import com.usco.edu.service.IAdministrativoService;
 
 @RestController
 @RequestMapping(path = "administrativo")
 public class AdministrativoCarnetRestController {
 	
 	@Autowired
-	IAdministrativoCarnetService administrativoCarnetService;
+	IAdministrativoService administrativoCarnetService;
 	
 	@GetMapping(path = "administrativo-get/{id}/{username}")
 	public List<Administrativo> findByIdentificacion(@PathVariable String id, @PathVariable String username) {

@@ -22,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.usco.edu.entities.RespuestaToken;
 import com.usco.edu.entities.Usuario;
-import com.usco.edu.service.IAdministradorService;
+import com.usco.edu.service.IInicioSesionService;
 import com.usco.edu.service.IUsuarioService;
 
 
@@ -30,7 +30,7 @@ import com.usco.edu.service.IUsuarioService;
 public class TokenRestController {
 	
 	@Autowired
-	IAdministradorService administrativoService;
+	IInicioSesionService inicioSesionService;
 	
 	@Autowired 
 	IUsuarioService usuarioservice;
@@ -69,8 +69,8 @@ public class TokenRestController {
 	private String generartoken(Usuario usuarioLogueado , String ip ) {
 		String aplicativo = "76";
 		System.out.println(aplicativo+""+usuarioLogueado.getId() + ip);
-		String tokenSesion = administrativoService.getTokenInicioSesion(aplicativo+""+usuarioLogueado.getId() + ip , usuarioLogueado.getUsername());		
-		String url  = administrativoService.urltokenPeticion(usuarioLogueado.getUsername()) + "api/generarCodigo";
+		String tokenSesion = inicioSesionService.obtenerTokenInicioSesion(aplicativo+""+usuarioLogueado.getId() + ip , usuarioLogueado.getUsername());		
+		String url  = inicioSesionService.urlTokenPeticion(usuarioLogueado.getUsername()) + "api/generarCodigo";
 		System.out.println(url);
 		String tokenSesionbase64 = Base64.getEncoder().encodeToString(tokenSesion.getBytes());
 		
@@ -112,8 +112,8 @@ public class TokenRestController {
 	
 	private boolean validarToken(Usuario usuarioLogueado , String ip , String CodigoVerificacion ) {
 		String aplicativo = "76";
-		String tokenSesion = administrativoService.getTokenInicioSesion(aplicativo+""+usuarioLogueado.getId() + ip , usuarioLogueado.getUsername());	
-		String url  = administrativoService.urltokenPeticion(usuarioLogueado.getUsername()) + "api/validarCodigo";
+		String tokenSesion = inicioSesionService.obtenerTokenInicioSesion(aplicativo+""+usuarioLogueado.getId() + ip , usuarioLogueado.getUsername());	
+		String url  = inicioSesionService.urlTokenPeticion(usuarioLogueado.getUsername()) + "api/validarCodigo";
 		String tokenSesionbase64 = Base64.getEncoder().encodeToString(tokenSesion.getBytes());
 		
 		HttpHeaders headers = new HttpHeaders();
