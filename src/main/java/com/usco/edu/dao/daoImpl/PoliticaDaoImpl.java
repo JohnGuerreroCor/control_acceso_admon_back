@@ -48,7 +48,7 @@ public class PoliticaDaoImpl implements IPoliticaDao {
 		DataSource dataSource = jdbcComponent.construirDataSourceDeUsuario(userdb);
 		NamedParameterJdbcTemplate jdbc = jdbcComponent.construirTemplatenew(dataSource);
 
-		String sql = "UPDATE academia3000_john.carnetizacion.politica_estamento "
+		String sql = "UPDATE carnetizacion.politica_estamento "
 				+ "SET poe_fecha_modificacion=:fechaModificacion, poe_descripcion=:descripcion "
 				+ "WHERE poe_codigo=:codigo";
 
